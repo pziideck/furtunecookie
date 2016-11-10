@@ -1,4 +1,4 @@
 
         function saludar (){
-            alert("Hola chaca...");
+            swal("Hola chaca...");
         }
