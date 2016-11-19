@@ -3,6 +3,8 @@ var http = require('http');
 var fs = require('fs');
 var mime=require('mime');
 var staticServer=require("./internals/static-server");
+//importando manejadores
+var handlers = require('./internals/handlers');
 
 //estableciendo tema de colores
 var colors = require('colors');
@@ -16,12 +18,21 @@ colors.setTheme(config.colorTheme);
 
 var server = http.createServer(function (req, res) {
     var url  = req.url;
+    console.log(`>Recurso solicitado >${url}`.data);
     if(url === "/"){
         url = '/index.html';
     }
-    // Generar la ruta real del archivo socilitado
-    console.log(`>Recurso solicitado >${url}`.data);
+    //verificando si la url esta asociada  a una accion
+    //que puede hacer el server
+    if(typeof(handlers[url]) === "function") {
+        //Si existe una funcion en handlers llamada como el contenido de la variable "URL"
+        handlers[url](req, res);
+    }else{
+        //No se encontro un manejador para la url solicitada para el usuario
+        //se intentara servir de manera estatica
     staticServer.serve(url, res);
+    }
+
  
 });
 
