@@ -10,6 +10,6 @@
                 //Contenido del callback
                 console.log('> status'+status);
                 //Presentando el mensaje
-                swal(cookie.paper);
+                swal({title: "Fortuna!", text : cookie.paper,imageUrl:"./favicon.png"});
              },'json');
        }

@@ -1,24 +1,25 @@
 var colors = require("colors");
-colors.setTheme(require("../config/config").colorTheme);
+    colors.setTheme(require("../config/config").colorTheme);
 var fortune = require("./fortune");
-
-// Creando el handler getfortune
-var _crackTheCookie = function(req, res){
-    console.log("> Cookie crash requested...".data);
-    fortune.getFortune(function(fortunePaperObj){
-        // Preparando encabezados para contestar Json
-        res.writeHead(200,{
-            "Content-Type" : "application/json"
-        });
-        // Respondiendo con el objeto
-        res.end(fortunePaperObj);
-    });
-};
 
 var _getAuthor = function(req, res){
     console.log("> Se solicito: Author..".data);
     res.end("Author: Diego Galindo");
 };
+
+// Creando el handler getfortune
+var _crackTheCookie = function(req, res){
+    console.log("> Cookie crash requested...");
+    fortune.getFortune1(function(fortunePaperObject){
+        // Preparando encabezados para contestar Json
+        res.writeHead(200,{
+            "Content-Type" : "application/json"
+        });
+        // Respondiendo con el objeto
+        res.end(fortunePaperObject);
+    });
+};
+
 
 
 // Creando Objeto manejador

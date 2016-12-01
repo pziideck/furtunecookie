@@ -1,4 +1,51 @@
-var fortunes = [
+//conexion a mongo
+var mongo = require("mongodb");
+var mongoClient = mongo.MongoClient;
+
+// modulo getfortune con conexion a base de datos
+module.exports= { 
+    "getFortune" : function (cb) {
+        //conectando a la base de datos
+        mongoClient.connect('mongodb://127.0.0.1:27017/fortunecookie', 
+        function(err, db)
+        {
+            if(err)
+            {
+                console.log(">Error de conexion con la base de datos");
+
+                var fortunePaper = {
+                    "paper" : "life is a risk, cainal"
+                };
+                //--Convertir la fortuna a un string.--
+                var fortunePaperObject = JSON.stringify(fortunePaper);
+                //--Ejecuto mi callback y le paso como parametro mi string--
+                cb(fortunePaperObject);
+            }
+            else{
+            var fortunesCollection = db.collection("fortunes");
+            // encontrar mis paper en mi bd
+            var busca = fortunesCollection.find({});
+
+                busca.toArray(function(err, paper)
+                {
+
+                var paperRandom = Math.round(Math.random(0)* paper.length);
+                
+                var fortunePaperObject = JSON.stringify(paper[paperRandom]);
+
+                db.close();
+
+                console.log(">fortuna servida:"+fortunePaperObject);
+
+                cb(fortunePaperObject);
+
+                });
+            }
+        });
+    }
+};
+
+var fortunes1 = [
     "life is a risk, cainal",
     "vive la vida loca",
     "La felicidad y la tristeza son dos caras de la misma moneda.",
@@ -24,11 +71,13 @@ var fortunes = [
     function getIntRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
     }
+
+// modulo getfortune con conexion local con fortunes1
 module.exports = {
-    "getFortune" : function(cb){
+    "getFortune1" : function(cb){
         // Construyo objeto respuesta
-        var selector = getIntRandomNumber(0,fortunes.length -1);
-        var fortuneMessage = fortunes[selector];
+        var selector = getIntRandomNumber(0,fortunes1.length -1);
+        var fortuneMessage = fortunes1[selector];
         var fortunePaperObject = {
             "paper" : fortuneMessage
         };
