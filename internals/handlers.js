@@ -27,7 +27,11 @@ var _getAuthor = function(req, res){
 var handlers = {};
 
 // Registrando manejadores
+<<<<<<< HEAD
 handlers["/getthecookie"] = _crackTheCookie;
+=======
+handlers["/crackthecookie"] = _crackTheCookie;
+>>>>>>> dba29a1e4293ee90cd34a0d984526551c1f8ec1d
 handlers["/getAuthor"] = _getAuthor;
 
 // Exportando objeto manejador

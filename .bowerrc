@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 {
     "directory": "./static/vendor"
+=======
+{
+    "directory": "./static/vendor"
+>>>>>>> dba29a1e4293ee90cd34a0d984526551c1f8ec1d
 }
