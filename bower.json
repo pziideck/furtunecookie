@@ -1,0 +1,28 @@
+{
+  "name": "fortune-cookie",
+  "description": "Proyecto Final de PAW",
+  "main": "server.js",
+  "authors": [
+    "@pziideck"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "node",
+    "server",
+    "web",
+    "js"
+  ],
+  "homepage": "https://github.com/pziideck/furtunecookie",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./static/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sweetalert": "^1.1.3"
+  }
+}

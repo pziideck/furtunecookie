@@ -1,4 +1,14 @@
 
-        function saludar (){
-            alert("Hola chaca...");
+        function saludar(){
+            swal("Hola chaca...");
+        }
+
+        function getFortuneFromServer(){
+            //Realizando una peticion get asincrona con ajax asistida con jquery
+            $.get(url,"/getthecookie","",function(cookie, status){
+                //Contenido del callback
+                console.log('>status'+status);
+                //Presentando el mensaje
+                swal(cookie.paper);
+            },'json')
         }
