@@ -1,15 +1,15 @@
-<<<<<<< HEAD
+
 #IGNORANDO MODULOS DE NODEJS
 node_modules
 #IGNORANDO LOGs de node
 npm-debug.log
 #IGNORANDO Los paquetes del frontend
 static/vendor
-=======
+
 #IGNORANDO MODULOS DE NODEJS
 node_modules
 #IGNORANDO LOGs de node
 npm-debug.log
 #IGNORANDO Los paquetes del frontend
 static/vendor
->>>>>>> dba29a1e4293ee90cd34a0d984526551c1f8ec1d
+
